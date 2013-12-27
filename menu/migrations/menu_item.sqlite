@@ -1,0 +1,19 @@
+CREATE TABLE "menu_item" (
+"id"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+"root" INTEGER NOT NULL DEFAULT 0,
+"lft" INTEGER NOT NULL DEFAULT 0,
+"rgt" INTEGER NOT NULL DEFAULT 0,
+"level" INTEGER NOT NULL DEFAULT 0,
+"label" TEXT,
+"icon" TEXT,
+"url" TEXT,
+"url_params" TEXT,
+"target" TEXT,
+"access_role" TEXT,
+"enabled" INTEGER,
+"created" INTEGER
+);
+CREATE INDEX "menu_item_root" ON "menu_item" ("root");
+CREATE INDEX "menu_item_lft" ON "menu_item" ("lft");
+CREATE INDEX "menu_item_rgt" ON "menu_item" ("rgt");
+CREATE INDEX "menu_item_level" ON "menu_item" ("level");

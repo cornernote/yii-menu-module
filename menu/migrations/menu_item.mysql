@@ -1,0 +1,20 @@
+CREATE TABLE `menu_item` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`root` int(11) NOT NULL DEFAULT 0,
+`lft` int(11) NOT NULL DEFAULT 0,
+`rgt` int(11) NOT NULL DEFAULT 0,
+`level` int(11) NOT NULL DEFAULT 0,
+`label` varchar(255),
+`icon` varchar(255),
+`url` varchar(255),
+`url_params` varchar(255),
+`target` varchar(255),
+`access_role` varchar(255),
+`enabled` int(11),
+`created` int(11),
+PRIMARY KEY (`id`),
+KEY `menu_item_root` (`root`),
+KEY `menu_item_lft` (`lft`),
+KEY `menu_item_rgt` (`rgt`),
+KEY `menu_item_level` (`level`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
