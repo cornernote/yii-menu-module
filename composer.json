@@ -1,5 +1,5 @@
 {
-    "name": "mrphp/yii-menu-module",
+    "name": "cornernote/yii-menu-module",
     "description": "Provides components and an interface to manage menus using a database.",
     "type": "library",
     "license": "BSD-3-Clause",
