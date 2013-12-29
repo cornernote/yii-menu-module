@@ -9,14 +9,14 @@ Provides components and an interface to manage menus using a database.
 
 ### Contents
 
-[Features](#features)
-[Screenshots](#screenshots)
-[Requirements](#requirements)
-[Installation](#installation)
-[Configuration](#configuration)
-[Usage](#usage)
-[License](#license)
-[Links](#links)
+[Features](#features)  
+[Screenshots](#screenshots)  
+[Requirements](#requirements)  
+[Installation](#installation)  
+[Configuration](#configuration)  
+[Usage](#usage)  
+[License](#license)  
+[Links](#links)  
 
 
 ## Features
