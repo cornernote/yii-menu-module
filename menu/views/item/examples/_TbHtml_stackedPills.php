@@ -1,0 +1,1 @@
+<?php echo TbHtml::stackedPills($menuItem->getItems()); ?>

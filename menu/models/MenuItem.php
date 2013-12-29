@@ -116,12 +116,12 @@ class MenuItem extends MenuActiveRecord
     /**
      * $this->widget('zii.widgets.CMenu', array('items' => $menuItem->getItems()));
      *
-     * @param array $options
      * @param int $depthLimit
+     * @param array $options
      * @param int $depth
      * @return array
      */
-    public function getItems($options = array(), $depthLimit = 0, $depth = 1)
+    public function getItems($depthLimit = 0, $options = array(), $depth = 1)
     {
         $items = array();
         if ($depthLimit && $depthLimit < $depth)
@@ -129,18 +129,18 @@ class MenuItem extends MenuActiveRecord
         foreach ($this->children()->findAll('enabled=1') as $menuItem) {
             if (!$menuItem->checkAccess())
                 continue;
-            $items[] = $menuItem->getItem($options, $depthLimit, $depth);
+            $items[] = $menuItem->getItem($depthLimit, $options, $depth);
         }
         return $items;
     }
 
     /**
-     * @param array $options
      * @param int $depthLimit
+     * @param array $options
      * @param int $depth
      * @return array|string
      */
-    public function getItem($options = array(), $depthLimit = 0, $depth = 0)
+    public function getItem($depthLimit = 0, $options = array(), $depth = 0)
     {
         $itemOptions = isset($options['itemOptions']) ? $options['itemOptions'] : array();
         $linkOptions = isset($options['linkOptions']) ? $options['linkOptions'] : array();
@@ -151,9 +151,9 @@ class MenuItem extends MenuActiveRecord
         if (isset($options['submenuOptions']))
             unset($options['submenuOptions']);
 
-        $childItems = $this->getItems($options, $depthLimit, $depth + 1);
+        $childItems = $this->getItems($depthLimit, $options, $depth + 1);
         if ($this->label == '---') {
-            $item = '---';
+            $item = TbHtml::menuDivider($itemOptions);
         }
         else {
             $item = array();

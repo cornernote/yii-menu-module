@@ -1,0 +1,1 @@
+<?php echo TbHtml::pills($menuItem->getItems()); ?>

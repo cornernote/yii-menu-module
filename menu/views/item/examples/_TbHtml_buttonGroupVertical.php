@@ -1,0 +1,1 @@
+<?php echo TbHtml::buttonGroup($menuItem->getItems(), array('vertical' => true)); ?>

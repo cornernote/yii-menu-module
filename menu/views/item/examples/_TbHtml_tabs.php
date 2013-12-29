@@ -1,0 +1,1 @@
+<?php echo TbHtml::tabs($menuItem->getItems()); ?>

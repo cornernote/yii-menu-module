@@ -53,11 +53,31 @@ class MenuItemController extends MenuBehaviorActionWebController
     }
 
     /**
-     * Index
+     * Example
+     * @param $id
      */
-    public function actionExample()
+    public function actionExample($id)
     {
-        $this->render('example');
+        $menuItem = $this->loadModel($id);
+
+        $this->render('example', array(
+            'menuItem' => $menuItem,
+        ));
+    }
+
+    /**
+     * @param $view
+     * @param array $data
+     * @param bool $return
+     * @return string|null
+     */
+    public function renderExample($view, $data = array(), $return = false)
+    {
+        $output = CHtml::tag('div', array('class' => 'bs-docs-example'), $this->renderPartial($view, $data, true));
+        $output .= CHtml::tag('pre', array('class' => 'prettyprint linenums'), CHtml::encode(file_get_contents($this->getViewFile($view))));
+        if ($return)
+            return $output;
+        echo $output;
     }
 
 }
