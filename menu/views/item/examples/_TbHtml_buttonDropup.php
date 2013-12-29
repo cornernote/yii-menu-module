@@ -5,4 +5,3 @@ echo TbHtml::buttonDropdown($menuItem->label, $menuItem->getItems(1), array(
     'dropup' => true,
     'menuOptions' => array('pull' => TbHtml::PULL_RIGHT),
 ));
-?>

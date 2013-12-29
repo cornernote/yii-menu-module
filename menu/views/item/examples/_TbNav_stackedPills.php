@@ -4,4 +4,3 @@ $this->widget('bootstrap.widgets.TbNav', array(
     'items' => MenuItem::model()->findByPk($id)->getItems(),
     'stacked' => true,
 ));
-?>

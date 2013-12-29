@@ -120,8 +120,8 @@ class MenuWebController extends CController
     {
         if (!parent::beforeRender($view))
             return false;
-        if ($this->id != 'default' || $this->action->id != 'index')
-            $this->addBreadcrumb($this->module->name, array('/' . $this->module->id));
+        //if ($this->id != 'default' || $this->action->id != 'index')
+        //    $this->addBreadcrumb($this->module->name, array('/' . $this->module->id));
 
         return true;
     }

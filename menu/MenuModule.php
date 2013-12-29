@@ -14,6 +14,11 @@
 class MenuModule extends CWebModule
 {
     /**
+     * @var string
+     */
+    public $defaultController = 'item';
+
+    /**
      * @var string the ID of the {@link CDbConnection} application component. If not set,
      * a SQLite3 database will be automatically created and used. The SQLite database file
      * is <code>protected/runtime/menu-MenuVersion.db</code>.

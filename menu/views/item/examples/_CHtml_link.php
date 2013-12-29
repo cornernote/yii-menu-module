@@ -5,4 +5,3 @@ foreach (MenuItem::model()->findByPk($id)->getItems() as $item) {
     $links[] = CHtml::link($item['label'], $url);
 }
 echo implode(' | ', $links);
-?>

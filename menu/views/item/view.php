@@ -38,6 +38,8 @@ $attributes[] = array(
 );
 $attributes[] = array(
     'name' => 'enabled',
+    'value' => $model->getEnabledIcon(),
+    'type' => 'raw',
 );
 
 $this->widget('zii.widgets.CDetailView', array(
@@ -48,4 +50,4 @@ $this->widget('zii.widgets.CDetailView', array(
     ),
 ));
 
-echo CHtml::tag('div', array('class' => 'text-center'), CHtml::link(Yii::t('menu', 'View Examples'), array('example', 'id' => $model->id), array('class' => 'btn btn-default')));
+echo CHtml::tag('div', array('class' => 'text-center'), CHtml::link(Yii::t('menu', 'View Examples'), array('example', 'id' => $model->id), array('class' => 'btn btn-primary')));

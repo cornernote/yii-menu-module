@@ -226,4 +226,12 @@ class MenuItem extends MenuActiveRecord
         return $urlParams;
     }
 
+    /**
+     * @return string
+     */
+    public function getEnabledIcon()
+    {
+        return CHtml::tag('i', array('class' => 'fa fa-' . ($this->enabled ? 'check' : 'times')));
+    }
+
 }

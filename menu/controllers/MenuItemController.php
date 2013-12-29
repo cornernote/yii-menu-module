@@ -75,7 +75,7 @@ class MenuItemController extends MenuBehaviorActionWebController
      */
     public function renderExample($view, $data = array(), $return = false)
     {
-        $code = CHtml::encode(file_get_contents($this->getViewFile($view)));
+        $code = CHtml::encode(trim(file_get_contents($this->getViewFile($view))));
         $output = CHtml::tag('div', array('class' => 'bs-docs-example'), $this->renderPartial($view, $data, true));
         $output .= CHtml::tag('pre', array('class' => 'prettyprint linenums'), $code);
         if ($return)
