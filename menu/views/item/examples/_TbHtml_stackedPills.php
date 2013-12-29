@@ -1,1 +1,3 @@
-<?php echo TbHtml::stackedPills($menuItem->getItems()); ?>
+<?php
+echo TbHtml::stackedPills(MenuItem::model()->findByPk($id)->getItems());
+?>

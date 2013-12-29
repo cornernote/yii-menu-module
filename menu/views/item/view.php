@@ -47,3 +47,5 @@ $this->widget('zii.widgets.CDetailView', array(
         'class' => 'table table-condensed table-striped',
     ),
 ));
+
+echo CHtml::tag('div', array('class' => 'text-center'), CHtml::link(Yii::t('menu', 'View Examples'), array('example', 'id' => $model->id), array('class' => 'btn btn-default')));

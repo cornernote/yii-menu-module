@@ -1,4 +1,6 @@
-<?php $this->widget('bootstrap.widgets.TbNav', array(
+<?php
+$this->widget('bootstrap.widgets.TbNav', array(
     'type' => TbHtml::NAV_TYPE_PILLS,
-    'items' => $menuItem->getItems(),
-)); ?>
+    'items' => MenuItem::model()->findByPk($id)->getItems(),
+));
+?>

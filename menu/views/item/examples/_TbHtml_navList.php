@@ -1,1 +1,3 @@
-<?php echo TbHtml::navList($menuItem->getItems()); ?>
+<?php
+echo TbHtml::navList(MenuItem::model()->findByPk($id)->getItems());
+?>

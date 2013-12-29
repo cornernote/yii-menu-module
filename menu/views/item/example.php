@@ -12,7 +12,7 @@
  * @package yii-menu-module
  */
 
-$this->pageTitle = Yii::t('menu', 'Examples');
+$this->pageTitle = Yii::t('email', ':label (ID-:id)', array(':label' => $menuItem->label, ':id' => $menuItem->id));
 
 /** @var CClientScript $cs */
 $cs = Yii::app()->clientScript;
@@ -21,53 +21,67 @@ $cs->registerCssFile($baseUrl . '/prettify/prettify.css');
 $cs->registerScriptFile($baseUrl . '/prettify/prettify.js');
 $cs->registerScript('prettify', 'prettyPrint();');
 
-// zii.widgets.CMenu
-echo CHtml::tag('h2', array(), Yii::t('menu', 'zii.widgets.CMenu'));
-//echo CHtml::tag('p', array(), Yii::t('menu', 'Standard menu using CMenu.'));
-$this->renderExample('examples/_CMenu', array('menuItem' => $menuItem));
 
-// bootstrap.widgets.TbNavbar
-echo CHtml::tag('h2', array(), Yii::t('menu', 'bootstrap.widgets.TbNavbar'));
-$this->renderExample('examples/_TbNavbar', array('menuItem' => $menuItem));
-
-// TbHtml::buttonGroup
-echo CHtml::tag('h2', array(), Yii::t('menu', 'TbHtml::buttonGroup'));
-echo CHtml::tag('h3', array(), Yii::t('menu', 'Horizontal'));
-$this->renderExample('examples/_TbHtml_buttonGroup', array('menuItem' => $menuItem));
-echo CHtml::tag('h3', array(), Yii::t('menu', 'Vertical'));
-$this->renderExample('examples/_TbHtml_buttonGroupVertical', array('menuItem' => $menuItem));
-
-//// TbHtml::buttonDropdown
-echo CHtml::tag('h2', array(), Yii::t('menu', 'TbHtml::buttonDropdown'));
-echo CHtml::tag('h3', array(), Yii::t('menu', 'Dropdown'));
-$this->renderExample('examples/_TbHtml_buttonDropdown', array('menuItem' => $menuItem));
-echo CHtml::tag('h3', array(), Yii::t('menu', 'Dropdown Split'));
-$this->renderExample('examples/_TbHtml_buttonDropdownSplit', array('menuItem' => $menuItem));
-echo CHtml::tag('h3', array(), Yii::t('menu', 'Dropup'));
-$this->renderExample('examples/_TbHtml_buttonDropup', array('menuItem' => $menuItem));
-
-// TbHtml::nav
-echo CHtml::tag('h2', array(), Yii::t('menu', 'TbHtml::nav'));
-echo CHtml::tag('h3', array(), Yii::t('menu', 'Tabs'));
-$this->renderExample('examples/_TbHtml_tabs', array('menuItem' => $menuItem));
-echo CHtml::tag('h3', array(), Yii::t('menu', 'Pills'));
-$this->renderExample('examples/_TbHtml_pills', array('menuItem' => $menuItem));
-echo CHtml::tag('h3', array(), Yii::t('menu', 'Stacked Tabs'));
-$this->renderExample('examples/_TbHtml_stackedTabs', array('menuItem' => $menuItem));
-echo CHtml::tag('h3', array(), Yii::t('menu', 'Stacked Pills'));
-$this->renderExample('examples/_TbHtml_stackedPills', array('menuItem' => $menuItem));
-echo CHtml::tag('h3', array(), Yii::t('menu', 'Nav List'));
-$this->renderExample('examples/_TbHtml_navList', array('menuItem' => $menuItem));
-
-// bootstrap.widgets.TbNav
-echo CHtml::tag('h2', array(), Yii::t('menu', 'bootstrap.widgets.TbNav'));
-echo CHtml::tag('h3', array(), Yii::t('menu', 'Tabs'));
-$this->renderExample('examples/_TbNav_tabs', array('menuItem' => $menuItem));
-echo CHtml::tag('h3', array(), Yii::t('menu', 'Pills'));
-$this->renderExample('examples/_TbNav_pills', array('menuItem' => $menuItem));
-echo CHtml::tag('h3', array(), Yii::t('menu', 'Stacked Tabs'));
-$this->renderExample('examples/_TbNav_stackedTabs', array('menuItem' => $menuItem));
-echo CHtml::tag('h3', array(), Yii::t('menu', 'Stacked Pills'));
-$this->renderExample('examples/_TbNav_stackedPills', array('menuItem' => $menuItem));
-echo CHtml::tag('h3', array(), Yii::t('menu', 'Nav List'));
-$this->renderExample('examples/_TbNav_nav', array('menuItem' => $menuItem));
+$this->widget('bootstrap.widgets.TbTabs', array(
+    'type' => TbHtml::NAV_TYPE_PILLS,
+    'tabs' => array(
+        array(
+            'label' => Yii::t('menu', 'CMenu'),
+            'content' => $this->renderExample('examples/_CMenu', array('id' => $menuItem->id), true),
+            'active' => true,
+        ),
+        array(
+            'label' => Yii::t('menu', 'CHtml::link'),
+            'content' => CHtml::tag('h3', array(), Yii::t('menu', 'Links'))
+                . $this->renderExample('examples/_CHtml_link', array('id' => $menuItem->id), true)
+                . CHtml::tag('h3', array(), Yii::t('menu', 'Button Class'))
+                . $this->renderExample('examples/_CHtml_linkClass', array('id' => $menuItem->id), true),
+        ),
+        array(
+            'label' => Yii::t('menu', 'TbHtml::buttonGroup'),
+            'content' => CHtml::tag('h3', array(), Yii::t('menu', 'Horizontal'))
+                . $this->renderExample('examples/_TbHtml_buttonGroup', array('id' => $menuItem->id), true)
+                . CHtml::tag('h3', array(), Yii::t('menu', 'Vertical'))
+                . $this->renderExample('examples/_TbHtml_buttonGroupVertical', array('id' => $menuItem->id), true),
+        ),
+        array(
+            'label' => Yii::t('menu', 'TbHtml::buttonDropdown'),
+            'content' => CHtml::tag('h3', array(), Yii::t('menu', 'Dropdown'))
+                . $this->renderExample('examples/_TbHtml_buttonDropdown', array('id' => $menuItem->id), true)
+                . CHtml::tag('h3', array(), Yii::t('menu', 'Dropdown Split'))
+                . $this->renderExample('examples/_TbHtml_buttonDropdownSplit', array('id' => $menuItem->id), true)
+                . CHtml::tag('h3', array(), Yii::t('menu', 'Dropup'))
+                . $this->renderExample('examples/_TbHtml_buttonDropup', array('id' => $menuItem->id), true),
+        ),
+        array(
+            'label' => Yii::t('menu', 'TbHtml::nav'),
+            'content' => CHtml::tag('h3', array(), Yii::t('menu', 'Tabs'))
+                . $this->renderExample('examples/_TbHtml_tabs', array('id' => $menuItem->id), true)
+                . CHtml::tag('h3', array(), Yii::t('menu', 'Pills'))
+                . $this->renderExample('examples/_TbHtml_pills', array('id' => $menuItem->id), true)
+                . CHtml::tag('h3', array(), Yii::t('menu', 'Stacked Tabs'))
+                . $this->renderExample('examples/_TbHtml_stackedTabs', array('id' => $menuItem->id), true)
+                . CHtml::tag('h3', array(), Yii::t('menu', 'Stacked Pills'))
+                . $this->renderExample('examples/_TbHtml_stackedPills', array('id' => $menuItem->id), true)
+                . CHtml::tag('h3', array(), Yii::t('menu', 'Nav List'))
+                . $this->renderExample('examples/_TbHtml_navList', array('id' => $menuItem->id), true),
+        ),
+        array(
+            'label' => Yii::t('menu', 'TbNav'),
+            'content' => CHtml::tag('h3', array(), Yii::t('menu', 'Tabs'))
+                . $this->renderExample('examples/_TbNav_tabs', array('id' => $menuItem->id), true)
+                . CHtml::tag('h3', array(), Yii::t('menu', 'Pills'))
+                . $this->renderExample('examples/_TbNav_pills', array('id' => $menuItem->id), true)
+                . CHtml::tag('h3', array(), Yii::t('menu', 'Stacked Tabs'))
+                . $this->renderExample('examples/_TbNav_stackedTabs', array('id' => $menuItem->id), true)
+                . CHtml::tag('h3', array(), Yii::t('menu', 'Stacked Pills'))
+                . $this->renderExample('examples/_TbNav_stackedPills', array('id' => $menuItem->id), true)
+                . CHtml::tag('h3', array(), Yii::t('menu', 'Nav List'))
+                . $this->renderExample('examples/_TbNav_nav', array('id' => $menuItem->id), true),
+        ),
+        array(
+            'label' => Yii::t('menu', 'TbNavbar'),
+            'content' => $this->renderExample('examples/_TbNavbar', array('id' => $menuItem->id), true),
+        ),
+    ),
+));

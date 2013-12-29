@@ -21,10 +21,12 @@ class MenuItemController extends MenuBehaviorActionWebController
      */
     public function beforeRender($view)
     {
+        if (!parent::beforeRender($view))
+            return false;
         if ($view != 'index')
             $this->addBreadcrumb(Yii::t('menu', Yii::t('menu', 'Items')), Yii::app()->user->getState('index.menuItem', array('item/index')));
 
-        return parent::beforeRender($view);
+        return true;
     }
 
     /**
@@ -73,8 +75,9 @@ class MenuItemController extends MenuBehaviorActionWebController
      */
     public function renderExample($view, $data = array(), $return = false)
     {
+        $code = CHtml::encode(file_get_contents($this->getViewFile($view)));
         $output = CHtml::tag('div', array('class' => 'bs-docs-example'), $this->renderPartial($view, $data, true));
-        $output .= CHtml::tag('pre', array('class' => 'prettyprint linenums'), CHtml::encode(file_get_contents($this->getViewFile($view))));
+        $output .= CHtml::tag('pre', array('class' => 'prettyprint linenums'), $code);
         if ($return)
             return $output;
         echo $output;

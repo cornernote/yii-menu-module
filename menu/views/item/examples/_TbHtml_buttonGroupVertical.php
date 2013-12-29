@@ -1,1 +1,3 @@
-<?php echo TbHtml::buttonGroup($menuItem->getItems(), array('vertical' => true)); ?>
+<?php
+echo TbHtml::buttonGroup(MenuItem::model()->findByPk($id)->getItems(), array('vertical' => true));
+?>

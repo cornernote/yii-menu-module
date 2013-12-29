@@ -1,1 +1,3 @@
-<?php echo TbHtml::tabs($menuItem->getItems()); ?>
+<?php
+echo TbHtml::tabs(MenuItem::model()->findByPk($id)->getItems());
+?>

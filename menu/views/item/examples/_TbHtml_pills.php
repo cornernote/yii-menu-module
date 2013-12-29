@@ -1,1 +1,3 @@
-<?php echo TbHtml::pills($menuItem->getItems()); ?>
+<?php
+echo TbHtml::pills(MenuItem::model()->findByPk($id)->getItems());
+?>

@@ -1,1 +1,3 @@
-<?php echo TbHtml::stackedTabs($menuItem->getItems()); ?>
+<?php
+echo TbHtml::stackedTabs(MenuItem::model()->findByPk($id)->getItems());
+?>
