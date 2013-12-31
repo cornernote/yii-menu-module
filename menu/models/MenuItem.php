@@ -1,4 +1,6 @@
 <?php
+Yii::import('menu.components.MenuActiveRecord');
+
 /**
  * MenuItem
  *
