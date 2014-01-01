@@ -61,12 +61,9 @@ class MenuModule extends CWebModule
     public $adminUsers = array();
 
     /**
-     * @var array|string The view url for users, '--user_id--' will be replaced by the actual user_id.
-     * <pre>
-     * array('/user/view', 'id' => '--user_id--')
-     * </pre>
+     * @var string
      */
-    public $userViewUrl;
+    public $yiiStrapPath;
 
     /**
      * @var CDbConnection the DB connection instance
@@ -121,6 +118,24 @@ class MenuModule extends CWebModule
             foreach ($data as $name => $options)
                 if (empty($this->modelMap[$method][$name]))
                     $this->modelMap[$method][$name] = $options;
+
+        // when in web application
+        if (Yii::app() instanceof CWebApplication) {
+            // and in this module
+            $route = explode('/', Yii::app()->urlManager->parseUrl(Yii::app()->request));
+            if ($route[0] == $this->id) {
+                // setup yiiStrap components
+                if ($this->yiiStrapPath) {
+                    Yii::setPathOfAlias('bootstrap', realpath($this->yiiStrapPath));
+                    Yii::import('bootstrap.helpers.TbHtml');
+                    Yii::app()->setComponents(array(
+                        'bootstrap' => array(
+                            'class' => 'bootstrap.components.TbApi',
+                        ),
+                    ), false);
+                }
+            }
+        }
 
     }
 
