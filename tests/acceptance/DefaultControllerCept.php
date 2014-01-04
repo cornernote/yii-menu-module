@@ -17,4 +17,6 @@ $I = new WebGuy($scenario);
 $I->wantTo('ensure DefaultController works');
 
 $I->amOnPage('menu');
-$I->see('You may use the following tools');
+$I->see('Items');
+$I->see('Refresh');
+$I->see('Create');
