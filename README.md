@@ -80,7 +80,7 @@ return array(
 Download the [latest version](https://github.com/cornernote/yii-menu-module/archive/master.zip) and move the `menu` folder into your `protected/modules` folder.
 
 In addition the following are required:
-* [YiiStrap](http://www.getyiistrap.com) for the interface elements.  Please follow their Getting Started giude to setup the aliases and components for your application.
+* [YiiStrap](http://www.getyiistrap.com) for the interface elements.  Please follow their Getting Started guide to setup the aliases and components for your application.
 
 
 ## Configuration
