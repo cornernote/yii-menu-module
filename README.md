@@ -8,6 +8,8 @@ Provides components and an interface to manage menus using a database.
 - [Features](#features)
 - [Screenshots](#screenshots)
 - [Installation](#installation)
+    - [Composer Installation](#composer-installation)
+    - [Manual Installation](#manual-installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
 - [Resources](#resources)
