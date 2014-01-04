@@ -73,16 +73,6 @@ Download the [latest version](https://github.com/cornernote/yii-menu-module/arch
 
 ## Configuration
 
-If you installed with composer, you should set an alias to your `vendor` folder in your yii configuration:
-
-```php
-return array(
-	'aliases' => array(
-		'vendor' => '/path/to/vendor',
-	),
-);
-```
-
 Add yii-menu-module to the `modules` in your yii configuration:
 
 ```php
@@ -90,9 +80,7 @@ return array(
 	'modules' => array(
 		'menu' => array(
 			// path to the MenuModule class
-			'class' => 'vendor.cornernote.yii-menu-module.menu.MenuModule',
-			// if you downloaded into modules
-			//'class' => 'application.modules.menu.MenuModule',
+			'class' => '/path/to/vendor/cornernote/yii-menu-module/menu/MenuModule',
 
 			// add a list of users who can access the menu module
 			'adminUsers' => array('admin'),
