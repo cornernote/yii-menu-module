@@ -7,7 +7,6 @@ Provides components and an interface to manage menus using a database.
 
 - [Features](#features)
 - [Screenshots](#screenshots)
-- [Requirements](#requirements)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
@@ -43,16 +42,6 @@ View Examples:
 ![item-examples](https://raw.github.com/cornernote/yii-menu-module/master/screenshot/item-examples.png)
 
 
-## Requirements
-
-This is a Yii module, which requires the [Yii Framework](http://www.yiiframework.com).
-
-In addition the following are required:
-* [YiiStrap](http://www.getyiistrap.com) for the interface elements.  Please follow their Getting Started giude to setup the aliases and components for your application.
-
-**Please Note**: All requirements are automatically downloaded into the correct location when using composer.  There is no need to download additional files or set paths to third party files.
-
-
 ## Installation
 
 Please download using ONE of the following methods:
@@ -60,15 +49,38 @@ Please download using ONE of the following methods:
 
 ### Composer Installation
 
+All requirements are automatically downloaded into the correct location when using composer.  There is no need to download additional files or set paths to third party files.
+
+Get composer:
+
 ```
 curl http://getcomposer.org/installer | php
-php composer.phar require cornernote/yii-menu-module
+```
+
+Install latest release OR development version:
+
+```
+php composer.phar require cornernote/yii-menu-module:*           // latest release
+php composer.phar require cornernote/yii-menu-module:dev-master  // development version
+```
+
+Add the `vendor` folder to the `aliases` in your yii configuration:
+
+```php
+return array(
+	'aliases' => array(
+		'vendor' => '/path/to/vendor',
+	),
+);
 ```
 
 
 ### Manual Installation
 
 Download the [latest version](https://github.com/cornernote/yii-menu-module/archive/master.zip) and move the `menu` folder into your `protected/modules` folder.
+
+In addition the following are required:
+* [YiiStrap](http://www.getyiistrap.com) for the interface elements.  Please follow their Getting Started giude to setup the aliases and components for your application.
 
 
 ## Configuration
@@ -87,6 +99,10 @@ return array(
 
 			// set this to false in production to improve performance
 			'autoCreateTables' => true,
+
+			// this is only required if you do not want YiiStrap in your app config
+			// for example, if you are running YiiBooster
+			'yiiStrapPath' => '/path/to/yiistrap',
 		),
 	),
 );
