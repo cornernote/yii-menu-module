@@ -13,6 +13,7 @@ Provides components and an interface to manage menus using a database.
 - [Configuration](#configuration)
 - [Usage](#usage)
 - [Resources](#resources)
+- [Support](#support)
 - [License](#license)
 
 
@@ -79,7 +80,7 @@ return array(
 
 ### Manual Installation
 
-Download the [latest version](https://github.com/cornernote/yii-menu-module/archive/master.zip) and move the `menu` folder into your `protected/modules` folder.
+Download the [latest release](https://github.com/cornernote/yii-menu-module/releases/latest) or [development version](https://github.com/cornernote/yii-menu-module/archive/master.zip) and move the `menu` folder into your `protected/modules` folder.
 
 In addition the following are required:
 * [YiiStrap](http://www.getyiistrap.com) for the interface elements.  Please follow their Getting Started guide to setup the aliases and components for your application.
@@ -129,6 +130,12 @@ To see how you can use your menus:
 - [YiiStrap](http://getyiistrap.com/)
 - [JSTreeBehavior](https://github.com/drumaddict/yii-jstree-behavior)
 - [NestedSetBehavior](https://github.com/yiiext/nested-set-behavior)
+
+
+## Support
+
+- Does this README need improvement?  Go ahead and [suggest a change](https://github.com/cornernote/yii-menu-module/edit/master/README.md).
+- Found a bug, or need help using this project?  Check the [open issues](https://github.com/cornernote/yii-menu-module/issues) or [create an issue](https://github.com/cornernote/yii-menu-module/issues/new).
 
 
 ## License
