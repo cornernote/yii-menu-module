@@ -19,35 +19,27 @@ class MenuModule extends CWebModule
     public $defaultController = 'item';
 
     /**
-     * @var string the ID of the {@link CDbConnection} application component. If not set,
-     * a SQLite3 database will be automatically created and used. The SQLite database file
-     * is <code>protected/runtime/menu-MenuVersion.db</code>.
+     * @var string The ID of the CDbConnection application component. If not set, a SQLite3
+     * database will be automatically created in <code>protected/runtime/menu-MenuVersion.db</code>.
      */
     public $connectionID;
 
     /**
-     * @var boolean whether the DB tables should be created automatically if they do not exist. Defaults to true.
+     * @var boolean Whether the DB tables should be created automatically if they do not exist. Defaults to true.
      * If you already have the table created, it is recommended you set this property to be false to improve performance.
      */
     public $autoCreateTables = true;
 
     /**
-     * @var string
+     * @var string The layout used for module controllers.
      */
-    public $layout = 'column1';
+    public $layout = 'menu.views.layouts.column1';
 
     /**
-     * @var array
+     * @var array mapping from controller ID to controller configurations.
      */
     public $controllerMap = array(
         'item' => 'menu.controllers.MenuItemController',
-    );
-
-    /**
-     * @var array Use this to define access rules for the module.
-     */
-    public $controllerFilters = array(
-        'menuAccess' => array('menu.components.MenuAccessFilter'),
     );
 
     /**
@@ -56,12 +48,22 @@ class MenuModule extends CWebModule
     public $modelMap = array();
 
     /**
-     * @var array
+     * @var array Defines the access filters for the module.
+     * The default is MenuAccessFilter which will allow any user listed in MenuModule::adminUsers to have access.
+     */
+    public $controllerFilters = array(
+        'menuAccess' => array('menu.components.MenuAccessFilter'),
+    );
+
+    /**
+     * @var array A list of users who can access this module.
      */
     public $adminUsers = array();
 
     /**
-     * @var string
+     * @var string The path to YiiStrap.
+     * Only required if you do not want YiiStrap in your app config, for example, if you are running YiiBooster.
+     * Only required if you did not install using composer.
      */
     public $yiiStrapPath;
 

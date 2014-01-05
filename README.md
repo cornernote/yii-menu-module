@@ -97,15 +97,29 @@ return array(
 			// path to the MenuModule class
 			'class' => '/path/to/vendor/cornernote/yii-menu-module/menu/MenuModule',
 
-			// add a list of users who can access the menu module
-			'adminUsers' => array('admin'),
+			// The ID of the CDbConnection application component. If not set, a SQLite3
+			// database will be automatically created in protected/runtime/menu-MenuVersion.db.
+			'connectionID' => 'db',
 
-			// set this to false in production to improve performance
+			// Whether the DB tables should be created automatically if they do not exist. Defaults to true.
+			// If you already have the table created, it is recommended you set this property to be false to improve performance.
 			'autoCreateTables' => true,
 
-			// path to YiiStrap
-			// only required if you do not want YiiStrap in your app config, for example, if you are running YiiBooster
-			// only required if you did not install using composer
+			// The layout used for module controllers.
+			'layout' => 'menu.views.layouts.column1',
+
+			// Defines the access filters for the module.
+			// The default is MenuAccessFilter which will allow any user listed in MenuModule::adminUsers to have access.
+			'controllerFilters' => array(
+				'menuAccess' => array('menu.components.MenuAccessFilter'),
+			),
+
+			// A list of users who can access this module.
+			'adminUsers' => array('admin'),
+
+			// The path to YiiStrap.
+			// Only required if you do not want YiiStrap in your app config, for example, if you are running YiiBooster.
+			// Only required if you did not install using composer.
 			'yiiStrapPath' => '/path/to/vendor/crisu83/yiistrap',
 		),
 	),
