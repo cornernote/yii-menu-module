@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Yii-menu-module : Provides components and an interface to manage menus using a database." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Yii-menu-module</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/cornernote/yii-menu-module">View on GitHub</a>
+
+          <h1 id="project_title">Yii-menu-module</h1>
+          <h2 id="project_tagline">Provides components and an interface to manage menus using a database.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/cornernote/yii-menu-module/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/cornernote/yii-menu-module/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="yii-menu-module" class="anchor" href="#yii-menu-module"><span class="octicon octicon-link"></span></a>Yii Menu Module</h1>
+
+<p>Provides components and an interface to manage menus using a database.</p>
+
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Simple to use interface.</li>
+<li>Unlimited menus, each with a hierarchy with unlimited depth.</li>
+<li>Supports drag and drop, and sortable.</li>
+<li>Right-click context menu allows full management from a single page.</li>
+<li>Inline usage examples for CHtml, CMenu and many YiiStrap widgets are provided.</li>
+<li>The examples show your actual menu.</li>
+</ul><h2>
+<a name="screenshots" class="anchor" href="#screenshots"><span class="octicon octicon-link"></span></a>Screenshots</h2>
+
+<p>Menu Items List:
+<img src="https://raw.github.com/cornernote/yii-menu-module/master/screenshot/items.png" alt="items"></p>
+
+<p>Right-Click Context Menu:
+<img src="https://raw.github.com/cornernote/yii-menu-module/master/screenshot/item-context.png" alt="item-context"></p>
+
+<p>Create/Update Form:
+<img src="https://raw.github.com/cornernote/yii-menu-module/master/screenshot/item-form.png" alt="item-form"></p>
+
+<p>View Properties:
+<img src="https://raw.github.com/cornernote/yii-menu-module/master/screenshot/item-properties.png" alt="item-properties"></p>
+
+<p>View Examples:
+<img src="https://raw.github.com/cornernote/yii-menu-module/master/screenshot/item-examples.png" alt="item-examples"></p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Please download using ONE of the following methods:</p>
+
+<h3>
+<a name="composer-installation" class="anchor" href="#composer-installation"><span class="octicon octicon-link"></span></a>Composer Installation</h3>
+
+<p>All requirements are automatically downloaded into the correct location when using composer.  There is no need to download additional files or set paths to third party files.</p>
+
+<p>Get composer:</p>
+
+<pre><code>curl http://getcomposer.org/installer | php
+</code></pre>
+
+<p>Install latest release OR development version:</p>
+
+<pre><code>php composer.phar require cornernote/yii-menu-module:*           // latest release
+php composer.phar require cornernote/yii-menu-module:dev-master  // development version
+</code></pre>
+
+<p>Add the <code>vendor</code> folder to the <code>aliases</code> in your yii configuration:</p>
+
+<div class="highlight highlight-php"><pre><span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'aliases'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'vendor'</span> <span class="o">=&gt;</span> <span class="s1">'/path/to/vendor'</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="manual-installation" class="anchor" href="#manual-installation"><span class="octicon octicon-link"></span></a>Manual Installation</h3>
+
+<p>Download the <a href="https://github.com/cornernote/yii-menu-module/releases/latest">latest release</a> or <a href="https://github.com/cornernote/yii-menu-module/archive/master.zip">development version</a> and move the <code>menu</code> folder into your <code>protected/modules</code> folder.</p>
+
+<p>In addition the following are required:</p>
+
+<ul>
+<li>
+<a href="http://www.getyiistrap.com">YiiStrap</a> for the interface elements.  Please follow their Getting Started guide to setup the aliases and components for your application.</li>
+</ul><h2>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<p>Add yii-menu-module to the <code>modules</code> in your yii configuration:</p>
+
+<div class="highlight highlight-php"><pre><span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'modules'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'menu'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="c1">// path to the MenuModule class</span>
+            <span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'/path/to/vendor/cornernote/yii-menu-module/menu/MenuModule'</span><span class="p">,</span>
+
+            <span class="c1">// The ID of the CDbConnection application component. If not set, a SQLite3</span>
+            <span class="c1">// database will be automatically created in protected/runtime/menu-MenuVersion.db.</span>
+            <span class="s1">'connectionID'</span> <span class="o">=&gt;</span> <span class="s1">'db'</span><span class="p">,</span>
+
+            <span class="c1">// Whether the DB tables should be created automatically if they do not exist. Defaults to true.</span>
+            <span class="c1">// If you already have the table created, it is recommended you set this property to be false to improve performance.</span>
+            <span class="s1">'autoCreateTables'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+
+            <span class="c1">// The layout used for module controllers.</span>
+            <span class="s1">'layout'</span> <span class="o">=&gt;</span> <span class="s1">'menu.views.layouts.column1'</span><span class="p">,</span>
+
+            <span class="c1">// Defines the access filters for the module.</span>
+            <span class="c1">// The default is MenuAccessFilter which will allow any user listed in MenuModule::adminUsers to have access.</span>
+            <span class="s1">'controllerFilters'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s1">'menuAccess'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">'menu.components.MenuAccessFilter'</span><span class="p">),</span>
+            <span class="p">),</span>
+
+            <span class="c1">// A list of users who can access this module.</span>
+            <span class="s1">'adminUsers'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">'admin'</span><span class="p">),</span>
+
+            <span class="c1">// The path to YiiStrap.</span>
+            <span class="c1">// Only required if you do not want YiiStrap in your app config, for example, if you are running YiiBooster.</span>
+            <span class="c1">// Only required if you did not install using composer.</span>
+            <span class="s1">'yiiStrapPath'</span> <span class="o">=&gt;</span> <span class="s1">'/path/to/vendor/crisu83/yiistrap'</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">),</span>
+<span class="p">);</span>
+</pre></div>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>To see how you can use your menus:</p>
+
+<ul>
+<li>Visit <code>index.php?r=menu</code>.</li>
+<li>Create a menu and some children.</li>
+<li>Right click your menu, click Properties, then click View Examples.</li>
+</ul><h2>
+<a name="resources" class="anchor" href="#resources"><span class="octicon octicon-link"></span></a>Resources</h2>
+
+<ul>
+<li><a href="http://getyiistrap.com/">YiiStrap</a></li>
+<li><a href="https://github.com/drumaddict/yii-jstree-behavior">JSTreeBehavior</a></li>
+<li><a href="https://github.com/yiiext/nested-set-behavior">NestedSetBehavior</a></li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Yii-menu-module maintained by <a href="https://github.com/cornernote">cornernote</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-46879709-3");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
