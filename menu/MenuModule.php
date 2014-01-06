@@ -82,7 +82,7 @@ class MenuModule extends CWebModule
      */
     public static function powered()
     {
-        return Yii::t('menu', 'Powered by {yii-menu-module}.', array('{yii-menu-module}' => '<a href="https://github.com/cornernote/yii-menu-module#yii-menu-module" rel="external">Yii Menu Module</a>'));
+        return Yii::t('menu', 'Powered by {yii-menu-module}.', array('{yii-menu-module}' => '<a href="http://cornernote.github.io/yii-menu-module/" rel="external">Yii Menu Module</a>'));
     }
 
     /**
