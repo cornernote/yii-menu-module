@@ -54,7 +54,6 @@ class MenuJsTreeWidget extends CWidget
                 'plugins' => $this->plugins,
                 'urlFormat' => Yii::app()->urlManager->urlFormat,
                 'csrfToken' => Yii::app()->request->csrfToken,
-                'baseUrl' => Yii::app()->baseUrl,
                 'url' => array(
                     'fetchTree' => Yii::app()->createUrl($controllerID . '/fetchTree'),
                     'returnForm' => Yii::app()->createUrl($controllerID . '/returnForm'),
