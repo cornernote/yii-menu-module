@@ -42,40 +42,32 @@ class MenuJsTreeWidget extends CWidget
     private function register_Js_Css()
     {
 
-        $baseUrl = Yii::app()->baseUrl;
-        $assetsUrl = Yii::app()->getModule('menu')->getAssetsUrl();
-        $clientScript = Yii::app()->clientScript;
-        $csrf = Yii::app()->request->csrfToken;
-        $open_nodes = $this->getOpenNodes();
-        $themes = json_encode($this->themes);
-        $plugins = json_encode($this->plugins);
-
         //assuming that we use the widget in  controller with JsTreeBehavior
-        if (isset($this->controller->module)) {
-            $controllerID = $this->controller->module->id . "/" . $this->controller->id;
-        }
-        else {
-            $controllerID = $this->controller->id;
-        }
+        $controllerID = isset($this->controller->module) ? $this->controller->module->id . '/' . $this->controller->id : $this->controller->id;
 
         //pass php variables to javascript
-        $jstree_behavior_js = <<<EOD
-      (function ($) {
-          JsTreeBehavior = {
-           controllerID:'$controllerID',
-            container_ID:'$this->id',
-            open_nodes:$open_nodes,
-            themes:$themes,
-            plugins:$plugins,
-              },
-         Yii_js = {
-           baseUrl:'$baseUrl',
-           csrf:'$csrf'
-           }
-      }(jQuery));
-EOD;
+        $jstree_behavior_js = '(function ($) { JsTreeBehavior = ' . json_encode(array(
+                'controllerID' => $controllerID,
+                'container_ID' => $this->id,
+                'open_nodes' => $this->getOpenNodes(),
+                'themes' => $this->themes,
+                'plugins' => $this->plugins,
+                'urlFormat' => Yii::app()->urlManager->urlFormat,
+                'csrfToken' => Yii::app()->request->csrfToken,
+                'baseUrl' => Yii::app()->baseUrl,
+                'url' => array(
+                    'fetchTree' => Yii::app()->createUrl($controllerID . '/fetchTree'),
+                    'returnForm' => Yii::app()->createUrl($controllerID . '/returnForm'),
+                    'returnView' => Yii::app()->createUrl($controllerID . '/returnView'),
+                    'rename' => Yii::app()->createUrl($controllerID . '/rename'),
+                    'remove' => Yii::app()->createUrl($controllerID . '/remove'),
+                    'moveCopy' => Yii::app()->createUrl($controllerID . '/moveCopy'),
+                ),
+            )) . '; }(jQuery));';
 
 
+        $clientScript = Yii::app()->clientScript;
+        $assetsUrl = Yii::app()->getModule('menu')->getAssetsUrl();
         //uncomment to register jquery only if you have not already registered it somewhere else in your application
         //$clientScript->registerCoreScript('jquery');
 
