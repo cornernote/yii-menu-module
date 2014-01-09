@@ -20,6 +20,7 @@
         "cornernote/gii-modeldoc-generator": "dev-master"
     },
     "require-dev": {
-        "yiisoft/yii": "1.1.14"
+        "yiisoft/yii": "1.1.14",
+        "clevertech/yii-booster": "dev-master"
     }
 }

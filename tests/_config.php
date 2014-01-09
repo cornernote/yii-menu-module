@@ -17,10 +17,8 @@ return array(
     'import' => array(
         'menu.components.*',
         'menu.models.*',
-        'bootstrap.helpers.TbHtml',
     ),
     'aliases' => array(
-        'bootstrap' => realpath(BASE_PATH . '/../vendor/crisu83/yiistrap'),
         'menu' => realpath(BASE_PATH . '/../menu'),
         'vendor' => realpath(BASE_PATH . '/../vendor'),
     ),
@@ -32,7 +30,7 @@ return array(
             'basePath' => realpath(BASE_PATH . '/_www/assets'),
         ),
         'bootstrap' => array(
-            'class' => 'bootstrap.components.TbApi',
+            'class' => 'vendor.clevertech.yii-booster.src.components.Bootstrap',
         ),
         'db' => array(
             'connectionString' => 'sqlite:' . realpath(BASE_PATH . '/_runtime') . '/test.db',
@@ -49,6 +47,7 @@ return array(
             'class' => 'menu.MenuModule',
             'connectionID' => 'db',
             'controllerFilters' => array(),
+            'yiiStrapPath' => realpath(BASE_PATH . '/../vendor/crisu83/yiistrap'),
         ),
         'gii' => array(
             'class' => 'system.gii.GiiModule',

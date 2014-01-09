@@ -16,7 +16,14 @@ class SiteController extends CController
 
     public function actionIndex()
     {
-        echo 'Hello World';
+        // init YiiBooster
+        Yii::app()->getComponent('bootstrap');
+        // render a widget only found in YiiBooster
+        $this->widget('bootstrap.widgets.TbButton', array(
+            'label' => 'hello world',
+            'type' => 'primary',
+        ));
+        //$this->renderText('hello world!');
     }
 
 }
