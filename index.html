@@ -168,13 +168,20 @@ php composer.phar require cornernote/yii-menu-module:dev-master    // developmen
     <div class="section">
         <h2 id="configuration">Configuration</h2>
 
+        <p>Add the <code>menu</code> folder to the <code>aliases</code> in your yii configuration:</p>
+        <pre class="prettyprint linenums lang-php">return array(
+    'aliases' => array(
+        'audit' => '/path/to/vendor/cornernote/yii-menu-module/menu',
+    ),
+);</pre>
+
         <p>Add yii-menu-module to the <code>modules</code> in your yii configuration:</p>
 
         <pre class="prettyprint linenums lang-php">return array(
     'modules' => array(
         'menu' => array(
             // path to the MenuModule class
-            'class' => '/path/to/vendor/cornernote/yii-menu-module/menu/MenuModule',
+            'class' => 'menu.MenuModule',
 
             // The ID of the CDbConnection application component. If not set, a SQLite3
             // database will be automatically created in protected/runtime/menu-MenuVersion.db.
