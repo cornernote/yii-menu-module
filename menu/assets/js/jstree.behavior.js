@@ -368,7 +368,6 @@ $(function () {
                 spinner.stop();
             },
             success: function (data) {
-
                 $.fancybox(data,
                     {    "transitionIn": "elastic",
                         "transitionOut": "elastic",

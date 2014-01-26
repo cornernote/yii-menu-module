@@ -1,4 +1,5 @@
 <?php
+
 /**
  *   JsTreeWidget  class file.
  *
@@ -10,7 +11,6 @@
  * @license  http://opensource.org/licenses/MIT  The MIT License (MIT)
  * @version 1.0.0
  */
-
 class MenuJsTreeWidget extends CWidget
 {
 
@@ -33,13 +33,19 @@ class MenuJsTreeWidget extends CWidget
     public $plugins = array('themes', 'html_data', 'contextmenu', 'crrm', 'dnd', 'cookies', 'ui');
 
 
+    /**
+     *
+     */
     public function init()
     {
-        $this->register_Js_Css();
+        $this->registerAssets();
         parent::init();
     }
 
-    private function register_Js_Css()
+    /**
+     *
+     */
+    private function registerAssets()
     {
 
         //assuming that we use the widget in  controller with JsTreeBehavior
@@ -104,14 +110,16 @@ class MenuJsTreeWidget extends CWidget
     private function getOpenNodes()
     {
         $categories = CActiveRecord::model($this->modelClassName)->findAll(array('order' => 'lft'));
-        $identifiers = array();
+        $open_nodes = array();
         foreach ($categories as $n => $category) {
-            $identifiers[] = "'" . 'node_' . $category->id . "'";
+            $open_nodes[] = 'node_' . $category->id;
         }
-        $open_nodes = '[' . implode(',', $identifiers) . ']';
         return $open_nodes;
     }
 
+    /**
+     *
+     */
     public function run()
     {
         echo CHtml::tag('div', array('class' => 'well', 'style' => 'margin-top: 20px', 'id' => $this->id));
