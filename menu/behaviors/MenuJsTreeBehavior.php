@@ -1,4 +1,5 @@
 <?php
+
 /**
  * JsTreeBehavior class file.
  *
@@ -12,7 +13,6 @@
  * @license http://opensource.org/licenses/MIT  The MIT License (MIT)
  * @version 1.0.0
  */
-
 class MenuJsTreeBehavior extends CBehavior
 {
 
@@ -35,6 +35,16 @@ class MenuJsTreeBehavior extends CBehavior
      * @var string the model property that will be used as the jstree  node label.
      */
     public $label_property = 'name';
+
+    /**
+     * @var string the model property that will be used to show the node as enabled or disabled.
+     */
+    public $enabled_property = 'enabled';
+
+    /**
+     * @var string the model property to use for an access role.
+     */
+    public $access_property = 'access_role';
 
     /**
      * @var string the model property that will be populate the rel attribute of the jstree anchor tag.
@@ -316,7 +326,13 @@ class MenuJsTreeBehavior extends CBehavior
 
             echo CHtml::openTag('li', array('id' => 'node_' . $category->primaryKey, 'rel' => $category->getAttribute($this->rel_property)));
             echo CHtml::openTag('a', array('href' => '#'));
-            echo CHtml::encode($category->getAttribute($this->label_property));
+            if ($category->getAttribute($this->enabled_property)) {
+                $access = $category->getAttribute($this->access_property) ? ' [' . $category->getAttribute($this->access_property) . ']' : '';
+                echo CHtml::encode($category->getAttribute($this->label_property) . $access);
+            }
+            else {
+                echo CHtml::tag('s', array(), CHtml::encode($category->getAttribute($this->label_property)));
+            }
             echo CHtml::closeTag('a');
 
             $level = $category->level;
