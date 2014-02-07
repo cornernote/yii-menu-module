@@ -20,7 +20,7 @@ echo CHtml::tag('div', array(
 ), ($model->isNewRecord ? Yii::t('menu', 'MenuItem has been created successfully.') : Yii::t('menu', 'MenuItem  has been updated successfully.')));
 
 /** @var MenuActiveForm $form */
-$form = $this->beginWidget('menu.widgets.MenuActiveForm', array(
+$form = $this->beginWidget('menu.components.MenuActiveForm', array(
         'id' => 'menuItem-form',
         'layout' => TbHtml::FORM_LAYOUT_HORIZONTAL,
         'htmlOptions' => array('class' => 'ajax-form'),

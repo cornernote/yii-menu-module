@@ -20,7 +20,7 @@ $this->menu[] = array('label' => Yii::t('menu', 'Refresh'), 'linkOptions' => arr
 $this->menu[] = array('label' => Yii::t('menu', 'Create'), 'linkOptions' => array('id' => 'add_root', 'class' => 'btn btn-default'));
 
 // menus
-$this->widget('menu.widgets.MenuJsTreeWidget', array(
+$this->widget('menu.components.MenuJsTreeWidget', array(
     'modelClassName' => 'MenuItem',
     'themes' => array('theme' => 'default', 'dots' => true, 'icons' => true),
     'plugins' => array('themes', 'html_data', 'contextmenu', 'crrm', 'dnd', 'cookies', 'ui')
