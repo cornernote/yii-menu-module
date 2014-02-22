@@ -112,7 +112,6 @@ class MenuModule extends CWebModule
         parent::init();
 
         // setup paths
-        Yii::setPathOfAlias('menu', dirname(__FILE__));
         $this->setImport(array(
             'menu.models.*',
             'menu.components.*',
