@@ -32,32 +32,7 @@ Yii::import('menu.components.MenuActiveRecord');
  * @method MenuItem[] findAllBySql() findAllBySql($sql, array $params = array())
  * @method MenuItem with() with()
  *
- * @see MenuNestedSetBehavior
- * @method MenuItem descendants() descendants(int $depth = NULL)
- * @method MenuItem children() children()
- * @method MenuItem ancestors() ancestors(int $depth = NULL)
- * @method MenuItem roots() roots()
- * @method MenuItem getParent() getParent()
- * @method MenuItem getPrevSibling() getPrevSibling()
- * @method MenuItem getNextSibling() getNextSibling()
- * @method boolean saveNode() saveNode(boolean $runValidation = true, boolean $attributes = NULL)
- * @method boolean deleteNode() deleteNode()
- * @method boolean prependTo() prependTo(MenuItem $target, boolean $runValidation = true, array $attributes = NULL)
- * @method boolean prepend() prepend(MenuItem $target, boolean $runValidation = true, array $attributes = NULL)
- * @method boolean appendTo() appendTo(MenuItem $target, boolean $runValidation = true, array $attributes = NULL)
- * @method boolean append() append(MenuItem $target, boolean $runValidation = true, array $attributes = NULL)
- * @method boolean insertBefore() insertBefore(MenuItem $target, boolean $runValidation = true, array $attributes = NULL)
- * @method boolean insertAfter() insertAfter(MenuItem $target, boolean $runValidation = true, array $attributes = NULL)
- * @method boolean moveBefore() moveBefore(MenuItem $target)
- * @method boolean moveAfter() moveAfter(MenuItem $target)
- * @method boolean moveAsFirst() moveAsFirst(MenuItem $target)
- * @method boolean moveAsLast() moveAsLast(MenuItem $target)
- * @method boolean moveAsRoot() moveAsRoot()
- * @method boolean isDescendantOf() isDescendantOf(MenuItem $subj)
- * @method boolean isLeaf() isLeaf()
- * @method boolean isRoot() isRoot()
- * @method boolean getIsDeletedRecord() getIsDeletedRecord()
- * @method setIsDeletedRecord() setIsDeletedRecord(boolean $value)
+ * @mixin MenuNestedSetBehavior
  *
  * --- END ModelDoc ---
  *
@@ -69,7 +44,6 @@ Yii::import('menu.components.MenuActiveRecord');
  *
  * @package yii-menu-module
  */
-
 class MenuItem extends MenuActiveRecord
 {
 
@@ -234,6 +208,19 @@ class MenuItem extends MenuActiveRecord
     public function getEnabledIcon()
     {
         return CHtml::tag('i', array('class' => 'fa fa-' . ($this->enabled ? 'check' : 'times')));
+    }
+
+    /**
+     *
+     */
+    public function afterSave()
+    {
+        parent::afterSave();
+        /** @var MenuModule $menu */
+        $menu = Yii::app()->getModule('menu');
+        if ($menu->getCache()) {
+            $menu->getCache()->flush();
+        }
     }
 
 }

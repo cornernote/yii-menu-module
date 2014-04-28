@@ -25,6 +25,11 @@ class MenuModule extends CWebModule
     public $connectionID;
 
     /**
+     * @var string The ID of the CCache application component. If not set, cache is not used.
+     */
+    public $cacheID;
+
+    /**
      * @var boolean Whether the DB tables should be created automatically if they do not exist. Defaults to true.
      * If you already have the table created, it is recommended you set this property to be false to improve performance.
      */
@@ -74,6 +79,11 @@ class MenuModule extends CWebModule
      * @var CDbConnection the DB connection instance
      */
     private $_db;
+
+    /**
+     * @var CCache the cache instance
+     */
+    private $_cache;
 
     /**
      * @var string Url to the assets
@@ -166,13 +176,41 @@ class MenuModule extends CWebModule
     }
 
     /**
-     * Sets the DB connection used by the cache component.
+     * Sets the DB connection used by the Menu module
      * @param CDbConnection $value the DB connection instance
-     * @since 1.1.5
      */
     public function setDbConnection($value)
     {
         $this->_db = $value;
+    }
+
+    /**
+     * @return CCache the cache instance
+     * @throws CException if {@link cache} does not point to a valid application component.
+     */
+    public function getCache()
+    {
+        if ($this->_cache !== null)
+            return $this->_cache;
+        elseif (($id = $this->cacheID) !== null) {
+            if (($this->_cache = Yii::app()->getComponent($id)) instanceof CCache)
+                return $this->_cache;
+            else
+                throw new CException(Yii::t('menu', 'MenuModule.cacheID "{id}" is invalid. Please make sure it refers to the ID of a CCache application component.',
+                    array('{id}' => $id)));
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * Sets the cache component used by the module
+     * @param CCache $value the cache instance
+     */
+    public function setCache($value)
+    {
+        $this->_cache = $value;
     }
 
     /**
