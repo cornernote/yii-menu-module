@@ -96,6 +96,7 @@ class MenuJsTreeWidget extends CWidget
         $clientScript->registerCoreScript('yiiactiveform');
 
         // jquery.form.js plugin http://malsup.com/jquery/form/
+        $clientScript->registerScriptFile($assetsUrl . '/js/jquery-migrate-1.2.1.js', CClientScript::POS_END);
         $clientScript->registerScriptFile($assetsUrl . '/js/jquery.form.js', CClientScript::POS_END);
         $clientScript->registerScriptFile($assetsUrl . '/js/form.js', CClientScript::POS_END);
         //jstree
