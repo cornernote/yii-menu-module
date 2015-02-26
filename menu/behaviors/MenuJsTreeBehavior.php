@@ -324,14 +324,14 @@ class MenuJsTreeBehavior extends CBehavior
                 }
             }
 
-            echo CHtml::openTag('li', array('id' => 'node_' . $category->primaryKey, 'rel' => $category->getAttribute($this->rel_property)));
+            echo CHtml::openTag('li', array('id' => 'node_' . $category->primaryKey, 'rel' => $category->{$this->rel_property}));
             echo CHtml::openTag('a', array('href' => '#'));
-            if ($category->getAttribute($this->enabled_property)) {
-                $access = $category->getAttribute($this->access_property) ? ' [' . $category->getAttribute($this->access_property) . ']' : '';
-                echo CHtml::encode($category->getAttribute($this->label_property) . $access);
+            if ($category->{$this->enabled_property}) {
+                $access = $category->{$this->access_property} ? ' [' . $category->{$this->access_property} . ']' : '';
+                echo CHtml::encode($category->{$this->label_property} . $access);
             }
             else {
-                echo CHtml::tag('s', array(), CHtml::encode($category->getAttribute($this->label_property)));
+                echo CHtml::tag('s', array(), CHtml::encode($category->{$this->label_property}));
             }
             echo CHtml::closeTag('a');
 
@@ -370,7 +370,7 @@ class MenuJsTreeBehavior extends CBehavior
             }
 
             echo CHtml::openTag('li');
-            echo CHtml::encode($category->getAttribute($this->label_property));
+            echo CHtml::encode($category->{$this->label_property});
             $level = $category->level;
         }
 
