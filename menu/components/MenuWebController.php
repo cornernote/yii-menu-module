@@ -39,6 +39,18 @@ class MenuWebController extends CController
     /**
      *
      */
+    public function init()
+    {
+        /** @var MenuModule $menu */
+        $menu = Yii::app()->getModule('menu');
+        if ($menu->homeUrl)
+            Yii::app()->homeUrl = $menu->homeUrl;
+        parent::init();
+    }
+    
+    /**
+     *
+     */
     public function filters()
     {
         return $this->module->controllerFilters;

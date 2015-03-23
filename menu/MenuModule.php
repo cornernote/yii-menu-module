@@ -138,10 +138,6 @@ class MenuModule extends CWebModule
                 if (empty($this->modelMap[$method][$name]))
                     $this->modelMap[$method][$name] = $options;
 
-        // set homeUrl
-        if ($this->homeUrl)
-            Yii::app()->homeUrl = $this->homeUrl;
-
         // init yiiStrap
         $this->initYiiStrap();
     }
