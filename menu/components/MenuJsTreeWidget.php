@@ -20,6 +20,11 @@ class MenuJsTreeWidget extends CWidget
     public $modelClassName;
 
     /**
+     * @var string the controller id that will handle the XHR calls from the JsTree widget
+     */
+    public $controllerID;
+
+    /**
      * @var string theme configuration
      * @link  http://www.jstree.com/documentation/themes
      */
@@ -48,8 +53,12 @@ class MenuJsTreeWidget extends CWidget
     private function registerAssets()
     {
 
-        //assuming that we use the widget in  controller with JsTreeBehavior
-        $controllerID = isset($this->controller->module) ? $this->controller->module->id . '/' . $this->controller->id : $this->controller->id;
+        if (empty($this->controllerID)) {
+            //assuming that we use the widget in  controller with JsTreeBehavior
+            $controllerID = isset($this->controller->module) ? $this->controller->module->id . '/' . $this->controller->id : $this->controller->id;
+        } else {
+            $controllerID = $this->controllerID;
+        }
 
         //pass php variables to javascript
         $jstree_behavior_js = '(function ($) { JsTreeBehavior = ' . json_encode(array(
