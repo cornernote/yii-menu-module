@@ -19,8 +19,7 @@
         "crisu83/yiistrap": "dev-master"
     },
     "require-dev": {
-        "yiisoft/yii": "1.1.16",
-        "clevertech/yii-booster": "dev-master"
+        "yiisoft/yii": "1.1.16"
     },
     "autoload": {
         "classmap": [
