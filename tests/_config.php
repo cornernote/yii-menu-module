@@ -53,7 +53,6 @@ return array(
             'class' => 'system.gii.GiiModule',
             'generatorPaths' => array(
                 'vendor.cornernote.gii-modeldoc-generator',
-                'bootstrap.gii',
             ),
             'ipFilters' => array('127.0.0.1'),
             'password' => false,
