@@ -129,7 +129,7 @@ class MenuItem extends MenuActiveRecord
 
         $childItems = $this->getItems($depthLimit, $options, $depth + 1);
         if ($this->label == '---') {
-            $item = TbHtml::menuDivider($itemOptions);
+            $item = array('label' => TbHtml::menuDivider($itemOptions));
         }
         else {
             $item = array();
